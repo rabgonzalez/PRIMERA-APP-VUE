@@ -96,10 +96,10 @@ En el setup() creamos 3 variables:
 1. **crearPersonaje** decide los elementos que se mostrarán en pantalla, si está en false mostrará la lista de los personajes creados y si está en true mostrará el formulario de creación de personajes. 
 También le hemos creado un método (setCrearPersonaje) que al llamarlo modificará el valor del boolean.
 
-> [!TIP] Importante
+> [!TIP]
 crearPersonaje utiliza la librería ref() ya que queremos que el valor de la variable persista entre renderizados.
 
-2. **personaje** guardar la información del personaje que creamos en el formulario.
+1. **personaje** guardar la información del personaje que creamos en el formulario.
 El formulario llama a la función agregarPersonaje:
 ```typescript
 const agregarPersonaje = () => {
@@ -143,7 +143,7 @@ Este utiliza 2 directivas de vue:
 3. La lista es un bucle de cartas de boostrap con la información de cada personaje, utiliza 3 directivas de vue, siendo v-for una de las nuevas:
 - **v-for:** se utiliza para realizar un bucle, nosotros la utilizamos para crear una carta por cada personaje que tengamos en la lista, estos bucles requieren de una key para diferenciarlo del resto de elementos.
 
-> [!TIP] Importante
+> [!TIP]
 > Al utilizar v-for también estamos haciendo uso de otra directiva, **v-bind**, pero se puede sustituir por los 2 puntos **:**, esta directiva sirve para asociar un atributo de HTML a una variable de JavaScript
 > ```typeScript
 > <option
