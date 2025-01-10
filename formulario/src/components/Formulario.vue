@@ -78,41 +78,14 @@
     </div>
 
     <div class="container">
-      <div class="row">
-        <div
-          class="col-12 col-md-4 mt-3"
+      <div class="row" v-if="personajes.length">
+        <Card
+          class="col-12 col-md-4 mt-3 carta"
           v-show="crearPersonaje === false"
           v-for="personaje in personajes"
           :key="personaje.nombre"
-        >
-          <div class="card carta">
-            <div class="card-body">
-              <h3 class="card-title">{{ personaje.nombre }}</h3>
-              <div class="card-text text-start">
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item ms-3 crear">
-                    <b class="bold">Origen:</b> {{ personaje.origen }}
-                  </li>
-                  <li class="list-group-item ms-3 crear">
-                    <b class="bold">Habilidad:</b> {{ personaje.habilidad }}
-                  </li>
-                  <li class="list-group-item ms-3 crear">
-                    <b class="bold">Aliados:</b>
-                    {{
-                      personaje.aliados.length > 0
-                        ? personaje.aliados.join(",")
-                        : "ninguno"
-                    }}
-                  </li>
-                  <li class="list-group-item ms-3 crear">
-                    <b class="bold">Mision cumplida:</b>
-                    {{ personaje.mision ? "Si" : "No" }}
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
+          :personaje="personaje"
+        />
       </div>
     </div>
   </div>
@@ -120,6 +93,8 @@
 
 <script lang="ts">
 import { defineComponent, reactive, ref } from "vue";
+import Card from "./Card.vue";
+import CardInfo from "./CardInfo.vue";
 
 type Personaje = {
   nombre: string;
@@ -130,6 +105,10 @@ type Personaje = {
 };
 
 export default defineComponent({
+  components: {
+    Card,
+    CardInfo,
+  },
   setup() {
     let crearPersonaje = ref(false);
     const personajes: Personaje[] = reactive([
@@ -313,16 +292,7 @@ export default defineComponent({
   background-color: #274156;
 }
 
-.carta {
-  background-color: #eeeeee;
-  box-shadow: 2px 2px 0 2px #d1a349;
-}
-
 .crear {
   background-color: #eeeeee;
-}
-
-.bold {
-  color: #d4af37;
 }
 </style>
